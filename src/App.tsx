@@ -1,8 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import { HomePage } from '../src/Components/HomePage';
-import {NavSection} from '../src/Components/NavSection'
-
+import { NavSection } from '../src/Components/NavSection';
 
 import './App.css';
  

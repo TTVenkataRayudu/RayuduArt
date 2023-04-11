@@ -11,8 +11,11 @@ export const NavSection = () => {
     const navigateToLogin = () => {
         navigate(RoutePaths.LOGIN)
     }
+    const navigateToRegister = () => {
+        navigate(RoutePaths.REGISTER)
+    }
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" >
             <Container>
                 <Navbar.Brand href="#home">RayuduArtGallery</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -32,7 +35,8 @@ export const NavSection = () => {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <a onClick={navigateToLogin }>Login</a>
+                        <a onClick={navigateToLogin}>Login</a>
+                        <a onClick={navigateToRegister}>Register</a>
                         
                     </Nav>
                 </Navbar.Collapse>

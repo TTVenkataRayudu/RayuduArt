@@ -3,6 +3,7 @@ import { HomePage } from '../src/Components/HomePage';
 import { NavSection } from '../src/Components/NavSection';
 import './App.css';
 import { LoginPage } from './Components/LoginPage';
+import { RegistrationPage } from './Components/RegistrationPage';
  
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Routes>
               <Route path={RoutePaths.HOME} element={<HomePage />}></Route>
               <Route path={RoutePaths.LOGIN} element={<LoginPage />}></Route>
+              <Route path={RoutePaths.REGISTER} element={<RegistrationPage />}></Route>
           </Routes>
       </BrowserRouter>
   );
@@ -23,6 +25,7 @@ function App() {
 export enum RoutePaths {
     HOME = "/",
     LOGIN = "/LoginPage",
+    REGISTER="/RegistrationPage"
 }
 
 export default App;

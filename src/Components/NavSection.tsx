@@ -1,10 +1,16 @@
-import React from 'react'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-export const NavSection=()=>{
+import { Link, useNavigate } from 'react-router-dom';
+import { RoutePaths } from '../App';
+export const NavSection = () => {
+    let navigate = useNavigate();
+    const navigateToHome = () => {
+        navigate(RoutePaths.HOME)
+    }
+    const navigateToLogin = () => {
+        navigate(RoutePaths.LOGIN)
+    }
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -12,7 +18,7 @@ export const NavSection=()=>{
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
+                        <a onClick={navigateToHome }>Home</a>
                         <Nav.Link href="#sketches">Sketches</Nav.Link>
                         <Nav.Link href="#paintings">Paintings</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -26,7 +32,8 @@ export const NavSection=()=>{
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <LoginPage />
+                        <a onClick={navigateToLogin }>Login</a>
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,4 +1,3 @@
-import React from "react";
 import Homepage from '../images/Homepage.jpg'
 export const HomePage= () => {
  return(

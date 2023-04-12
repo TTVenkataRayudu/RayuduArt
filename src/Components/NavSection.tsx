@@ -14,16 +14,22 @@ export const NavSection = () => {
     const navigateToRegister = () => {
         navigate(RoutePaths.REGISTER)
     }
+    const navigateToPaintingsPage = () => {
+        navigate(RoutePaths.PAINTINGSPAGE)
+    }
+    const navigateToSketches = () => {
+        navigate(RoutePaths.SKETCHESPAGE)
+    }
     return (
         <Navbar bg="light" expand="lg" >
             <Container>
-                <Navbar.Brand href="#home">RayuduArtGallery</Navbar.Brand>
+                <Navbar.Brand onClick={navigateToHome}>RayuduArtGallery</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <a onClick={navigateToHome }>Home</a>
-                        <Nav.Link href="#sketches">Sketches</Nav.Link>
-                        <Nav.Link href="#paintings">Paintings</Nav.Link>
+                        <Nav.Link onClick={navigateToHome }>Home</Nav.Link>
+                        <Nav.Link onClick={navigateToSketches}>Sketches</Nav.Link>
+                        <Nav.Link onClick={navigateToPaintingsPage}>Paintings</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
@@ -35,9 +41,8 @@ export const NavSection = () => {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <a onClick={navigateToLogin}>Login</a>
-                        <a onClick={navigateToRegister}>Register</a>
-                        
+                        <Nav.Link onClick={navigateToLogin}>Login</Nav.Link>
+                        <Nav.Link onClick={navigateToRegister}>Register</Nav.Link>                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

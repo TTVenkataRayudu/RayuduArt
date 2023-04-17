@@ -5,6 +5,7 @@ export const PaintingsPage = () => {
     return (
         <>
             <Gallery
+               
                 images={images}
             />
         </>

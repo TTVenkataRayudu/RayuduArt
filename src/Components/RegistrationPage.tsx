@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { RoutePaths } from '../App';
 
 export const RegistrationPage = () => {
     const [password, setPassword] = useState("");
@@ -9,6 +11,10 @@ export const RegistrationPage = () => {
     const [userName, setUserName] = useState("");
     const [nameError, setNameError] = useState("");
     const [formIsValid, setFormIsValid] = useState(false);
+    let navigate = useNavigate();
+    const navigateToHome = () => {
+        navigate(RoutePaths.HOME)
+    }
     const handleValidation = (event: any) => {
         setFormIsValid(true);
         if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
@@ -46,7 +52,7 @@ export const RegistrationPage = () => {
         e.preventDefault();
         handleValidation(e);
         if (formIsValid) {
-            alert('registration success');
+            navigateToHome();
         }
 
 

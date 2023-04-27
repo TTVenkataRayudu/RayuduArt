@@ -1,100 +1,84 @@
-import { Image } from "react-grid-gallery";
-import Image1 from "../images/Image1.jpg";
-import Image2 from "../images/Image2.jpg";
-import Image3 from "../images/Image3.jpg";
-import Image4 from "../images/Image4.jpg";
-import Image5 from "../images/Image5.jpg";
-import Image6 from "../images/Image6.jpg";
-import Image7 from "../images/Image7.jpg";
-import Image8 from "../images/Image8.jpg";
-import Image9 from "../images/Image9.jpg";
-import Image10 from "../images/Image10.jpg";
-import Image11 from "../images/Image11.png";
-import Image12 from "../images/Image12.jpg";
+import Image1 from "../images/Samantha.jpg";
+import Image2 from "../images/RakulPreetArt.jpg";
+import Image3 from "../images/Rajinikanth.jpg";
+import Image4 from "../images/ratantata.jpg";
+import Image5 from "../images/APJAbdulKalam.jpg";
+import Image6 from "../images/Gauthambuddha.jpg";
+import Image7 from "../images/Hermone.jpg";
+import Image8 from "../images/Msdhoni.jpg";
+import Image9 from "../images/Aishwaryarai.jpg";
+import Image10 from "../images/KajalAgarwal.jpg";
 
-export const images: Image[] = [
+
+export const artimages = [
     {
-        key:1,
-        src: Image1,
-        width: 3000,
-        height: 5000,
-        caption:"image1"
+        key: 1,
+        Name:"RakulPreetSingh",
+        ImageURL: Image2,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:2,
-        src: Image2,
-        width: 160,
-        height: 210,
-        caption: "image2"
+        key: 2,
+        Name: "Samantha",
+        ImageURL: Image1,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:3,
-        src: Image3,
-        width: 210,
-        height: 210,
-        caption: "image3"
+        key: 3,
+        Name: "Rajinikanth",
+        ImageURL: Image3,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:4,
-        src: Image4,
-        width: 140,
-        height: 160,
-        caption: "image4"
+        key: 1,
+        Name: "ratantata",
+        ImageURL: Image4,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key :5,
-        src: Image5,
-        width: 180,
-        height: 200,
-        caption: "image5"
+        key: 1,
+        Name: "APJAbdulKalam",
+        ImageURL: Image5,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:6,
-        src: Image6,
-        width: 200,
-        height: 210,
-        caption: "image6"
+        key: 1,
+        Name: "Gauthambuddha",
+        ImageURL: Image6,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:7,
-        src: Image7,
-        width: 120,
-        height: 120,
-        caption: "image7"
+        key: 1,
+        Name: "Hermone",
+        ImageURL: Image7,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:8,
-        src: Image8,
-        width: 130,
-        height: 140,
-        caption: "image8"
+        key: 1,
+        Name: "Msdhoni",
+        ImageURL: Image8,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:9,
-        src: Image9,
-        width: 160,
-        height: 200,
-        caption: "image9"
+        key: 1,
+        Name: "Aishwaryarai",
+        ImageURL: Image9,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     },
     {
-        key:10,
-        src: Image10,
-        width: 189,
-        height: 210,
-        caption: "image10"
-    },
-    {
-        key:11,
-        src: Image11,
-        width: 100,
-        height: 180,
-        caption: "image11"
-    },
-    {
-        key:12,
-        src: Image12,
-        width: 150,
-        height: 210,
-        caption: "image12"
+        key: 1,
+        Name: "KajalAgarwal",
+        ImageURL: Image10,
+        category: "pencilsketch",
+        Description: "a charcoal pencil offers a familiar feel and provides you with a lot of control over your marks. Even in this more structured form, it can be manipulated to create an array of rich and dark tones, as well as thin lines and bold ones."
     }
-]
+];

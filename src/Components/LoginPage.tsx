@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
+import { RoutePaths } from '../App';
+import { useNavigate } from 'react-router-dom';
 export const LoginPage = () => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [formIsValid, setFormIsValid] = useState(false);
+    let navigate = useNavigate();
+    const navigateToHome = () => {
+        navigate(RoutePaths.HOME)
+    }
     const handleValidation = (event: any) => {
         setFormIsValid(true);
         if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
@@ -34,7 +40,7 @@ export const LoginPage = () => {
         e.preventDefault();
         handleValidation(e);
         if (formIsValid) {
-            alert('login success');
+            navigateToHome();
         }
 
         

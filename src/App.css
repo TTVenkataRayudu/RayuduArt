@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+ 
 }
 
 .App-link {
@@ -35,4 +36,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.productimage {
+    display: grid;
+    gap: 3rem 1.5rem;
+    margin: 4em auto;
+}
+
+.homepage {
+    width: 100%;
+    height: auto;
 }

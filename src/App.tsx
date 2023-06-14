@@ -6,7 +6,7 @@ import { LoginPage } from './Components/LoginPage';
 import { PaintingsPage } from './Components/PaintingsPage';
 import { SketchesPage } from './Components/SketchesPage';
 import { RegistrationPage } from './Components/RegistrationPage';
-import { ImageUpload } from './Components/ImageUpload';
+import ImageUpload from './Components/ImageUpload';
  
 
 function App() {

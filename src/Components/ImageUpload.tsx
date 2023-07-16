@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import './ImageUpload.css'; // Import the CSS file
 
 const ImageUpload: React.FC = () => {
     const [id, setId] = useState('');
@@ -7,6 +8,7 @@ const ImageUpload: React.FC = () => {
     const [type, setType] = useState('');
     const [image, setImage] = useState<File | null>(null);
     const [message, setMessage] = useState('');
+    const [uploadedImage, setUploadedImage] = useState<string>('');
 
     const handleIdChange = (event: ChangeEvent<HTMLInputElement>) => {
         setId(event.target.value);
@@ -27,6 +29,7 @@ const ImageUpload: React.FC = () => {
     const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             setImage(event.target.files[0]);
+            setUploadedImage(URL.createObjectURL(event.target.files[0]));
         }
     };
 
@@ -41,7 +44,7 @@ const ImageUpload: React.FC = () => {
         formData.append('image', image as File);
 
         try {
-            const response = await fetch('/upload', {
+            const response = await fetch('/uploads', {
                 method: 'POST',
                 body: formData,
             });
@@ -54,6 +57,7 @@ const ImageUpload: React.FC = () => {
                 setDescription('');
                 setType('');
                 setImage(null);
+                setUploadedImage('');
             } else {
                 throw new Error(result.error);
             }
@@ -64,32 +68,44 @@ const ImageUpload: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="form-container">
             <h1>Image Upload</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="id">ID:</label>
-                <input type="text" id="id" name="id" value={id} onChange={handleIdChange} required />
+            <form onSubmit={handleSubmit} className="upload-form">
+                <div className="form-field">
+                    <label htmlFor="id">ID:</label>
+                    <input type="text" id="id" name="id" value={id} onChange={handleIdChange} required />
+                </div>
 
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" value={name} onChange={handleNameChange} required />
+                <div className="form-field">
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" id="name" name="name" value={name} onChange={handleNameChange} required />
+                </div>
 
-                <label htmlFor="description">Description:</label>
-                <input
-                    type="text"
-                    id="description"
-                    name="description"
-                    value={description}
-                    onChange={handleDescriptionChange}
-                    required
-                />
+                <div className="form-field">
+                    <label htmlFor="description">Description:</label>
+                    <input
+                        type="text"
+                        id="description"
+                        name="description"
+                        value={description}
+                        onChange={handleDescriptionChange}
+                        required
+                    />
+                </div>
 
-                <label htmlFor="type">Type:</label>
-                <input type="text" id="type" name="type" value={type} onChange={handleTypeChange} required />
+                <div className="form-field">
+                    <label htmlFor="type">Type:</label>
+                    <input type="text" id="type" name="type" value={type} onChange={handleTypeChange} required />
+                </div>
 
-                <label htmlFor="image">Image:</label>
-                <input type="file" id="image" name="image" accept="image/*" onChange={handleImageChange} required />
+                <div className="form-field">
+                    <label htmlFor="image">Image:</label>
+                    <input type="file" id="image" name="image" accept="image/*" onChange={handleImageChange} required />
+                </div>
 
-                <button type="submit">Upload</button>
+                {uploadedImage && <img src={uploadedImage} alt="Uploaded" className="uploaded-image" />}
+
+                <button type="submit" className="submit-button">Upload</button>
             </form>
 
             {message && <div>{message}</div>}

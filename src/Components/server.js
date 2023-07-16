@@ -1,45 +1,90 @@
-const express = require('express');
-const multer = require('multer');
-const mongoose = require('mongoose');
+import express, { Request, Response } from 'express';
+import multer, { Multer } from 'multer';
+import mongoose, { Connection, Document, Model } from 'mongoose';
+import { MongoClient, Db, ObjectId } from 'mongodb';
 
 const app = express();
-const upload = multer({ dest: 'uploads/' });
+const upload: Multer = multer({ dest: 'uploads/' });
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/imageUpload', { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-
+mongoose.connect('mongodb://122.185.109.90/32/rayuduart', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+const db: Connection = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
     console.log('Connected to MongoDB');
 });
 
-// Define the image model
-const ImageSchema = new mongoose.Schema({
-    id: String,
+// Define a schema for the image data
+interface IImage extends Document {
+    name: string;
+    description: string;
+    type: string;
+    fileId?: ObjectId;
+}
+
+const ImageSchema = new mongoose.Schema < IImage > ({
     name: String,
     description: String,
     type: String,
-    image: {
-        data: Buffer,
-        contentType: String
-    }
+    fileId: mongoose.ObjectId,
 });
 
-const Image = mongoose.model('Image', ImageSchema);
+// Create a model based on the schema
+const Image: Model<IImage> = mongoose.model < IImage > ('Image', ImageSchema);
 
-// Handle image upload request
-app.post('/upload', upload.single('image'), async (req, res) => {
+// Endpoint to handle image upload
+app.post('/upload', upload.single('image'), async (req: Request, res: Response) => {
     try {
-        const { id, name, description, type } = req.body;
-        const image = {
-            data: req.file.buffer,
-            contentType: req.file.mimetype
-        };
+        const { name, description, type } = req.body;
 
-        // Save the data to MongoDB
-        await Image.create({ id, name, description, type, image });
-        res.status(200).json({ message: 'Image uploaded successfully' });
+        // Create a new image document
+        const newImage: IImage = new Image({
+            name,
+            description,
+            type,
+        });
+
+        // Save the image document to MongoDB
+        await newImage.save();
+
+        // Connect to MongoDB directly to access GridFS
+        const client: MongoClient = await MongoClient.connect('mongodb://122.185.109.90/32/rayuduart', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+
+        const db: Db = client.db();
+        const bucket = new mongoose.mongo.GridFSBucket(db);
+
+        // Open a readable stream from the uploaded file
+        const readableStream = require('fs').createReadStream(req.file.path);
+
+        // Create a file ID for GridFS
+        const fileId: ObjectId = new mongoose.Types.ObjectId();
+
+        // Create a writable stream to store the file in GridFS
+        const writableStream = bucket.openUploadStreamWithId(fileId, req.file.originalname);
+
+        // Pipe the data from the readable stream to the writable stream
+        readableStream.pipe(writableStream);
+
+        // Wait for the file to finish uploading
+        await new Promise < void> ((resolve, reject) => {
+            writableStream.on('finish', resolve);
+            writableStream.on('error', reject);
+        });
+
+        // Update the image document with the GridFS file ID
+        newImage.fileId = fileId;
+        await newImage.save();
+
+        // Delete the temporary file
+        require('fs').unlinkSync(req.file.path);
+
+        res.json({ message: 'Image uploaded successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'An error occurred during upload' });
@@ -47,6 +92,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 });
 
 // Start the server
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
 });

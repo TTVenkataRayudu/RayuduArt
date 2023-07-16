@@ -1,52 +1,37 @@
-import Carousel from 'react-bootstrap/esm/Carousel'
+import Carousel from 'react-bootstrap/Carousel';
+import Homepage from '../images/Homepage.jpg';
 
-import Homepage from '../images/Homepage.jpg'
-export const HomePage= () => {
+export const HomePage = () => {
+    const carouselItems = [
+        {
+            imageSrc: Homepage,
+            caption: 'First slide label',
+            description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.',
+        },
+        {
+            imageSrc: Homepage,
+            caption: 'Second slide label',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        },
+        {
+            imageSrc: Homepage,
+            caption: 'Third slide label',
+            description: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.',
+        },
+    ];
+
     return (
         <Carousel>
-            <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100 homepage"
-                    src={Homepage}
-                    alt="First slide"
-                    
+            {carouselItems.map((item, index) => (
+                <Carousel.Item key={index} interval={1000}>
+                    <img className="d-block w-100 homepage" src={item.imageSrc} alt={`Slide ${index + 1}`} />
 
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-            <Carousel.Item interval={1000}>
-        <img 
-                    className="d-block w-100 homepage"
-                    src={Homepage}
-          alt="Second slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-            <Carousel.Item interval={1000}>
-        <img
-                    className="d-block w-100 homepage"
-                    src={Homepage}
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-    
-   
- )
-}
-
-         
+                    <Carousel.Caption>
+                        <h3>{item.caption}</h3>
+                        <p>{item.description}</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            ))}
+        </Carousel>
+    );
+};

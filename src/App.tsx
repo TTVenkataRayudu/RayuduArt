@@ -7,6 +7,8 @@ import { PaintingsPage } from './Components/PaintingsPage';
 import { SketchesPage } from './Components/SketchesPage';
 import { RegistrationPage } from './Components/RegistrationPage';
 import ImageUpload from './Components/ImageUpload';
+
+
  
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
               <Route path={RoutePaths.PAINTINGSPAGE} element={<PaintingsPage />}></Route>
               <Route path={RoutePaths.SKETCHESPAGE} element={<SketchesPage />}></Route> 
               <Route path={RoutePaths.IMAGEUPLOAD} element={<ImageUpload />}></Route> 
+        
+
 
           </Routes>
       </BrowserRouter>
@@ -36,6 +40,8 @@ export enum RoutePaths {
     PAINTINGSPAGE = "/PaintingsPage",
     SKETCHESPAGE = "/SketchesPage",
     IMAGEUPLOAD="/ImageUpload"
+
+
 }
 
 export default App;

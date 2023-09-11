@@ -26,9 +26,6 @@ function App() {
               <Route path={RoutePaths.PAINTINGSPAGE} element={<PaintingsPage />}></Route>
               <Route path={RoutePaths.SKETCHESPAGE} element={<SketchesPage />}></Route> 
               <Route path={RoutePaths.IMAGEUPLOAD} element={<ImageUpload />}></Route> 
-        
-
-
           </Routes>
       </BrowserRouter>
   );

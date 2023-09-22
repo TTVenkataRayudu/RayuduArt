@@ -1,0 +1,47 @@
+/* YourComponent.scss */
+
+.home {
+    background-color: beige;
+   
+}
+.heading{
+    padding-top:25px;
+    text-align:center;
+
+}
+.split-screen {
+    display: flex;
+    height: 100vh; /* Make the split-screen occupy the full viewport height */
+}
+
+.left-side {
+    flex: 1;
+    display: flex;
+    padding: 40px;
+ /*   background-color: white;*/
+    padding-bottom: 380px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #373737;
+    padding:20px; /* Add padding for better spacing */
+    font-family:'Microsoft Sans Serif';
+    padding-right:50px;
+    padding-bottom:450px;
+    
+}
+
+p {
+    font-family: Arial, sans-serif; /* Apply a nice font to the text */
+}

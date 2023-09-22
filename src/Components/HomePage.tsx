@@ -1,37 +1,39 @@
-import Carousel from 'react-bootstrap/Carousel';
 import Homepage from '../images/Homepage.jpg';
 
 export const HomePage = () => {
-    const carouselItems = [
-        {
-            imageSrc: Homepage,
-            caption: 'First slide label',
-            description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.',
-        },
-        {
-            imageSrc: Homepage,
-            caption: 'Second slide label',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        },
-        {
-            imageSrc: Homepage,
-            caption: 'Third slide label',
-            description: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.',
-        },
-    ];
 
-    return (
-        <Carousel>
-            {carouselItems.map((item, index) => (
-                <Carousel.Item key={index} interval={1000}>
-                    <img className="d-block w-100 homepage" src={item.imageSrc} alt={`Slide ${index + 1}`} />
 
-                    <Carousel.Caption>
-                        <h3>{item.caption}</h3>
-                        <p>{item.description}</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            ))}
-        </Carousel>
+
+
+    return    (    <>
+            <div className="home">
+                <div className="heading">
+                    <h1>Welcome to Venkata Rayudu Art Gallery</h1>
+                </div>
+                <div className="split-screen">
+                    <div className="left-side">
+                        <img src={Homepage} alt="" />
+                    </div>
+                    <div className="right-side">
+                        <br></br>
+                        <h3>
+                            Step into the captivating world of Venkata Rayudu, where imagination
+                            meets canvas. Each piece is a glimpse into their creative spirit, a
+                            testament to their passion for art. Explore, be inspired, and let the
+                            journey begin.
+                            <br />
+                            <br />
+                            Step into the captivating world of Venkata Rayudu, where imagination
+                            meets canvas. Each piece is a glimpse into their creative spirit, a
+                            testament to their passion for art. Explore, be inspired, and let the
+                            journey begin.
+                        </h3>
+                    </div>
+                </div>
+
+              
+            </div>
+        </>
+
     );
 };

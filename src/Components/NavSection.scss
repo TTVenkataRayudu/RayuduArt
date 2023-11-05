@@ -1,9 +1,13 @@
-/* NavSection.css */
-.nav-container {
+/* Update the existing CSS in NavSection.scss */
+.navigation {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    padding :10px;
-    padding-left:300px;
+    justify-content: center; /* Horizontally center the tabs */
+    align-items: center; /* Vertically center the tabs */
+    height: 10vh; /* Optionally, set the height of the container to the full viewport height */
+    background-color: white; /* Set the background color of the container to white */
+}
+
+/* Change the text color of the tab labels to black */
+.navigation .nav-link {
+    color: black;
 }

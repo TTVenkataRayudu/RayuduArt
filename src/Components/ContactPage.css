@@ -1,0 +1,81 @@
+.contact-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .contact-form h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+        text-align: left;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #888;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+    .form-group textarea {
+        resize: none;
+    }
+
+button[type="submit"] {
+    background-color: #6c757d; /* Interactive grey color */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin: 20px auto;
+}
+
+    button[type="submit"]:hover {
+        background-color: #495057; /* Slightly darker grey on hover */
+    }
+
+
+
+.contact-page {
+    background-color: #f0f0f0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

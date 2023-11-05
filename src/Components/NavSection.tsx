@@ -1,60 +1,46 @@
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
-/*import 'bootstrap/dist/css/bootstrap.min.css';*/
+import React from 'react';
+import { Tab, Tabs } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../App';
 import '../../src/App.css';
 import './NavSection.scss';
+
+import HeaderComponent from './HeaderComponent';
+
 export const NavSection = () => {
     let navigate = useNavigate();
-    const navigateToHome = () => {
-        navigate(RoutePaths.HOME)
-    }
-    const navigateToLogin = () => {
-        navigate(RoutePaths.LOGIN)
-    }
-    const navigateToRegister = () => {
-        navigate(RoutePaths.REGISTER)
-    }
-    const navigateToPaintingsPage = () => {
-        navigate(RoutePaths.PAINTINGSPAGE)
-    }
-    const navigateToSketches = () => {
-        navigate(RoutePaths.SKETCHESPAGE)
-    }
-    const navigateToImageUpload = () => {
-        navigate(RoutePaths.IMAGEUPLOAD)
-    }
 
-    const navigateToExplore = () => {
-        navigate(RoutePaths.EXPLORE)
-    }
+    const handleTabSelect = (key: any) => {
+        switch (key) {
+            case 'home':
+                navigate(RoutePaths.HOME);
+                break;
+            case 'artwork':
+                navigate(RoutePaths.SKETCHESPAGE);
+                break;
+            case 'contact':
+                navigate(RoutePaths.CONTACTPAGE);
+                break;
+            default:
+                break;
+        }
+    };
+
     return (
-        <Navbar bg="light" expand="lg" >
-            
-            <Container>
-                {/*<Navbar.Brand onClick={navigateToHome}>RayuduArtGallery</Navbar.Brand>*/}
-                {/*<Navbar.Toggle aria-controls="basic-navbar-nav" />*/}
-                {/*<Navbar.Collapse id="basic-navbar-nav">*/}
-                <div className="nav-container">
-                    <Navbar.Brand onClick={navigateToHome}>RayuduArtGallery</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav>
-                            <Nav.Link onClick={navigateToHome}>Home</Nav.Link>
-                            <Nav.Link onClick={navigateToSketches}>Artwork</Nav.Link>
-                            <Nav.Link onClick={navigateToImageUpload}> ImageUpload</Nav.Link>
-                            <Nav.Link onClick={navigateToExplore}> Explore</Nav.Link>
-                            <Nav.Link onClick={navigateToLogin}>Login</Nav.Link>
-                            <Nav.Link onClick={navigateToRegister}>Register</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                    </div>
-                   
+        <>
+            <HeaderComponent />
+            <Tabs
+                id="basic-tabs"
+                activeKey="home"
+                onSelect={handleTabSelect}
+                className="navigation"
+                variant="black-tabs" // Add a custom class for styling
+            >
+                <Tab eventKey="home" title="ABOUT"></Tab>
+                <Tab eventKey="artwork" title="GALLERY"></Tab>
+                <Tab eventKey="contact" title="CONTACT"></Tab>
 
-               {/* </Navbar.Collapse>*/}
-            </Container>
-        </Navbar> 
-  );
-   
-}
+            </Tabs>
+        </>
+    );
+};
